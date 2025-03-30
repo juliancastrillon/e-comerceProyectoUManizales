@@ -19,9 +19,7 @@
             <button (click)="updateQuantity(item.product.id, item.quantity + 1)">+</button>
           </div>
         </div>
-        <button class="remove-item" (click)="removeItem(item.product.id)">
-          Eliminar
-        </button>
+        <button class="remove-item" (click)="removeFromCart(item.product.id)">×</button>
       </div>
     </div>
 
@@ -29,15 +27,15 @@
       <h2>Resumen del pedido</h2>
       <div class="summary-item">
         <span>Subtotal</span>
-        <span>${{ total }}</span>
+        <span>${{ getSubtotal() }}</span>
       </div>
       <div class="summary-item">
-        <span>Envío</span>
-        <span>Gratis</span>
+        <span>IVA (19%)</span>
+        <span>${{ getIVA() }}</span>
       </div>
       <div class="summary-item total">
         <span>Total</span>
-        <span>${{ total }}</span>
+        <span>${{ getTotal() }}</span>
       </div>
       <button class="checkout-button">Proceder al pago</button>
       <button class="clear-cart" (click)="clearCart()">Vaciar carrito</button>

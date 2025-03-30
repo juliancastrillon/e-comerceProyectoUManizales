@@ -18,14 +18,12 @@ interface CartItem {
 })
 export class ShoppingCartComponent implements OnInit {
   cartItems: CartItem[] = [];
-  total: number = 0;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(items => {
       this.cartItems = items;
-      this.total = this.cartService.getTotal();
     });
   }
 
@@ -33,11 +31,23 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.updateQuantity(productId, quantity);
   }
 
-  removeItem(productId: number): void {
+  removeFromCart(productId: number): void {
     this.cartService.removeFromCart(productId);
   }
 
   clearCart(): void {
     this.cartService.clearCart();
+  }
+
+  getSubtotal(): number {
+    return this.cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+  }
+
+  getIVA(): number {
+    return this.getSubtotal() * 0.19;
+  }
+
+  getTotal(): number {
+    return this.getSubtotal() + this.getIVA();
   }
 } 
