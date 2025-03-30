@@ -13,7 +13,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/EComerceProyectoUManizales.git
+git clone https://github.com/juliancastrillon/e-comerceProyectoUManizales.git
 ```
 
 2. Navega al directorio del proyecto:
