@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   selectedCategory: number | null = null;
   loading = true;
   error = false;
+  private defaultImage = 'https://via.placeholder.com/400x400?text=No+Image';
 
   constructor(
     private productService: ProductService,
@@ -37,8 +38,7 @@ export class ProductListComponent implements OnInit {
         this.products = products;
         this.loading = false;
       },
-      error: (error) => {
-        console.error('Error loading products:', error);
+      error: () => {
         this.error = true;
         this.loading = false;
       }
@@ -50,8 +50,8 @@ export class ProductListComponent implements OnInit {
       next: (categories) => {
         this.categories = categories;
       },
-      error: (error) => {
-        console.error('Error loading categories:', error);
+      error: () => {
+        // Manejar el error silenciosamente
       }
     });
   }
@@ -65,8 +65,7 @@ export class ProductListComponent implements OnInit {
         this.products = products;
         this.loading = false;
       },
-      error: (error) => {
-        console.error('Error filtering products:', error);
+      error: () => {
         this.error = true;
         this.loading = false;
       }
@@ -75,5 +74,16 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
+  }
+
+  onImageError(event: Event, product: Product): void {
+    const img = event.target as HTMLImageElement;
+    img.src = this.defaultImage;
+    if (product.images.length > 1) {
+      const currentIndex = product.images.indexOf(img.src);
+      if (currentIndex < product.images.length - 1) {
+        img.src = product.images[currentIndex + 1];
+      }
+    }
   }
 } 

@@ -37,8 +37,7 @@ export class ProductDetailComponent implements OnInit {
         this.product = product;
         this.loading = false;
       },
-      error: (error) => {
-        console.error('Error loading product:', error);
+      error: () => {
         this.error = true;
         this.loading = false;
       }

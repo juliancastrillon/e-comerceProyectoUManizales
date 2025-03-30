@@ -35,8 +35,10 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.removeFromCart(productId);
   }
 
-  clearCart(): void {
-    this.cartService.clearCart();
+  confirmClearCart(): void {
+    if (confirm('¿Estás seguro de que deseas vaciar el carrito? Esta acción no se puede deshacer.')) {
+      this.cartService.clearCart();
+    }
   }
 
   getSubtotal(): number {
