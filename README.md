@@ -1,6 +1,28 @@
-# EComerceProyectoUManizales
+# E-commerce Proyecto U Manizales
 
-Este proyecto es una aplicación de comercio electrónico desarrollada con [Angular CLI](https://github.com/angular/angular-cli) versión 19.2.5.
+Este es un proyecto de e-commerce desarrollado con Angular
+
+## Demo en vivo
+
+Puedes probar la aplicación antes de descargarla en:
+[https://e-comerce-proyecto-u-manizales.vercel.app/](https://e-comerce-proyecto-u-manizales.vercel.app/)
+
+## Características
+
+- Lista de productos con categorías
+- Detalles de producto
+- Carrito de compras
+- Diseño responsivo
+- Integración con API de Platzi
+
+## Tecnologías utilizadas
+
+- Angular
+- TypeScript
+- SCSS
+- RxJS
+- Angular Router
+- LocalStorage para persistencia de datos
 
 ## Requisitos Previos
 
@@ -31,7 +53,11 @@ npm install
 ng serve
 ```
 
-5. Abre tu navegador y visita `http://localhost:4200/`
+5. Abre tu navegador y visita `http://localhost:4200`
+
+## Autor
+
+Julián Castrillón - Universidad de Manizales
 
 ## Estructura del Proyecto
 
@@ -104,3 +130,4 @@ Angular CLI no viene con un framework de pruebas end-to-end por defecto. Puedes 
 ## Recursos Adicionales
 
 Para obtener más información sobre el uso de Angular CLI, incluyendo referencias detalladas de comandos, visita la página [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
+
