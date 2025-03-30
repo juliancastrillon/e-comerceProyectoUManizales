@@ -33,9 +33,12 @@
       <div class="product-info">
         <h3>{{ product.title }}</h3>
         <p class="price">${{ product.price }}</p>
-        <a [routerLink]="['/product', product.id]" class="view-details">
-          Ver detalles
-        </a>
+        <div class="product-actions">
+          <button class="add-to-cart" (click)="addToCart(product)">Agregar al carrito</button>
+          <a [routerLink]="['/product', product.id]" class="view-details">
+            Ver detalles
+          </a>
+        </div>
       </div>
     </div>
   </div>

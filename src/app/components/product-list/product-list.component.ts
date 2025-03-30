@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -18,7 +19,10 @@ export class ProductListComponent implements OnInit {
   loading = true;
   error = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -67,5 +71,9 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
   }
 } 
