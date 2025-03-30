@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngIf="loading" class="loading">
+    Cargando...
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>Ha ocurrido un error al cargar el producto.</p>
+    <a routerLink="/">Volver al inicio</a>
+  </div>
+
+  <div *ngIf="product && !loading" class="product-detail">
+    <div class="product-images">
+      <div class="main-image">
+        <img [src]="product.images[0]" [alt]="product.title">
+      </div>
+      <div class="thumbnail-list">
+        <img *ngFor="let image of product.images" 
+             [src]="image" 
+             [alt]="product.title"
+             class="thumbnail">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p class="price">${{ product.price }}</p>
+      <div class="category">
+        <span>Categoría:</span>
+        <span>{{ product.category.name }}</span>
+      </div>
+      <div class="description">
+        <h2>Descripción</h2>
+        <p>{{ product.description }}</p>
+      </div>
+      <div class="actions">
+        <button class="add-to-cart">Agregar al carrito</button>
+        <a routerLink="/" class="back-button">Volver a productos</a>
+      </div>
+    </div>
+  </div>
+</div> 

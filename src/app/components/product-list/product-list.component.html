@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="categories-section">
+    <h2>Categorías</h2>
+    <div class="categories-list">
+      <button 
+        class="category-btn" 
+        [class.active]="selectedCategory === null"
+        (click)="loadProducts()">
+        Todos
+      </button>
+      <button 
+        *ngFor="let category of categories"
+        class="category-btn"
+        [class.active]="selectedCategory === category.id"
+        (click)="filterByCategory(category.id)">
+        {{ category.name }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Cargando productos...
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>Ha ocurrido un error al cargar los productos.</p>
+    <button (click)="loadProducts()">Intentar de nuevo</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="product.images[0]" [alt]="product.title" class="product-image">
+      <div class="product-info">
+        <h3>{{ product.title }}</h3>
+        <p class="price">${{ product.price }}</p>
+        <a [routerLink]="['/product', product.id]" class="view-details">
+          Ver detalles
+        </a>
+      </div>
+    </div>
+  </div>
+</div> 
